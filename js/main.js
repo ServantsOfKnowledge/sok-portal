@@ -28,6 +28,27 @@
     }
   });
 
+  // Nav "materializes" once there's content scrolled behind it
+  var nav = document.querySelector(".site-nav");
+  if (nav) {
+    var ticking = false;
+    var syncNav = function () {
+      nav.classList.toggle("is-scrolled", window.scrollY > 8);
+      ticking = false;
+    };
+    syncNav();
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (!ticking) {
+          requestAnimationFrame(syncNav);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+
   // Scroll reveal
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");

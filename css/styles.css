@@ -27,6 +27,8 @@
   --container: 1120px;
   --radius: 14px;
   --radius-lg: 22px;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -124,7 +126,7 @@ p { margin: 0 0 1em; color: var(--ink-secondary); }
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, opacity 150ms ease-out;
+  transition: transform 150ms var(--ease-spring), background-color 150ms var(--ease-spring), border-color 150ms var(--ease-spring), opacity 150ms var(--ease-spring);
 }
 .btn:active { transform: scale(0.97); }
 
@@ -148,7 +150,7 @@ p { margin: 0 0 1em; color: var(--ink-secondary); }
 }
 .btn-ghost::after {
   content: "→";
-  transition: transform 200ms cubic-bezier(.2,.8,.2,1);
+  transition: transform 200ms var(--ease-spring);
   display: inline-block;
 }
 .btn-ghost:hover::after { transform: translateX(4px); }
@@ -160,9 +162,22 @@ p { margin: 0 0 1em; color: var(--ink-secondary); }
   top: 0;
   z-index: 100;
   background: var(--nav-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--rule);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  transition: background-color 320ms var(--ease-spring), backdrop-filter 320ms var(--ease-spring), border-color 320ms var(--ease-spring), box-shadow 320ms var(--ease-spring);
+}
+/* Thicker material once there's content scrolled behind it — see apple-design §12 */
+.site-nav.is-scrolled {
+  background: var(--nav-bg-scrolled, rgba(255, 255, 255, 0.86));
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-bottom-color: var(--rule);
+  box-shadow: 0 12px 28px -20px rgb(var(--shadow-color) / 0.35);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .site-nav, .site-nav.is-scrolled { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 
 .nav-inner {
@@ -218,7 +233,7 @@ p { margin: 0 0 1em; color: var(--ink-secondary); }
   color: var(--ink-secondary);
   position: relative;
   padding: 6px 0;
-  transition: color 150ms ease-out;
+  transition: color 150ms var(--ease-spring);
 }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--ink); }
 .nav-links a[aria-current="page"]::after {
@@ -260,7 +275,7 @@ p { margin: 0 0 1em; color: var(--ink-secondary); }
     transform: translateY(-8px);
     opacity: 0;
     pointer-events: none;
-    transition: transform 220ms ease-out, opacity 220ms ease-out;
+    transition: transform 220ms var(--ease-spring), opacity 220ms var(--ease-spring);
   }
   .nav-links a { font-size: 1.2rem; }
   body.nav-open .nav-links {
@@ -407,7 +422,7 @@ section { padding: 88px 0; }
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: 28px;
-  transition: transform 200ms cubic-bezier(.2,.8,.2,1), box-shadow 200ms ease-out, border-color 200ms ease-out;
+  transition: transform 200ms var(--ease-spring), box-shadow 200ms var(--ease-spring), border-color 200ms var(--ease-spring);
 }
 .card:hover {
   transform: translateY(-3px);
@@ -441,7 +456,7 @@ section { padding: 88px 0; }
   gap: 14px;
   text-decoration: none;
   color: inherit;
-  transition: transform 200ms cubic-bezier(.2,.8,.2,1), border-color 200ms ease-out, box-shadow 200ms ease-out;
+  transition: transform 200ms var(--ease-spring), border-color 200ms var(--ease-spring), box-shadow 200ms var(--ease-spring);
 }
 .press-card:hover {
   transform: translateY(-3px);
@@ -476,7 +491,7 @@ section { padding: 88px 0; }
 }
 .press-card .read-more::after {
   content: "↗";
-  transition: transform 200ms cubic-bezier(.2,.8,.2,1);
+  transition: transform 200ms var(--ease-spring);
 }
 .press-card:hover .read-more::after { transform: translate(2px,-2px); }
 
@@ -506,7 +521,7 @@ section { padding: 88px 0; }
   font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out;
+  transition: background-color 150ms var(--ease-spring), color 150ms var(--ease-spring), border-color 150ms var(--ease-spring);
 }
 .filter-pill:hover { border-color: var(--ink); color: var(--ink); }
 .filter-pill.active {
@@ -535,7 +550,7 @@ section { padding: 88px 0; }
   padding: 16px 18px;
   font-size: 0.9rem;
   font-weight: 600;
-  transition: border-color 150ms ease-out, transform 150ms ease-out;
+  transition: border-color 150ms var(--ease-spring), transform 150ms var(--ease-spring);
 }
 .partner-item:hover { border-color: var(--rule-strong); transform: translateY(-2px); }
 .partner-item .role {
@@ -694,7 +709,7 @@ section { padding: 88px 0; }
 .footer-brand span { font-family: var(--font-display); font-weight: 700; }
 .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-tertiary); margin-bottom: 14px; }
 .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.footer-col a { text-decoration: none; color: var(--ink-secondary); font-size: 0.92rem; transition: color 150ms ease-out; }
+.footer-col a { text-decoration: none; color: var(--ink-secondary); font-size: 0.92rem; transition: color 150ms var(--ease-spring); }
 .footer-col a:hover { color: var(--ink); }
 .footer-bottom {
   display: flex;
@@ -713,7 +728,7 @@ section { padding: 88px 0; }
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 640ms cubic-bezier(.16,.8,.24,1), transform 640ms cubic-bezier(.16,.8,.24,1);
+  transition: opacity 640ms var(--ease-spring), transform 640ms var(--ease-spring);
 }
 .reveal.in-view {
   opacity: 1;
@@ -724,6 +739,12 @@ section { padding: 88px 0; }
     opacity: 1;
     transform: none;
     transition: opacity 200ms ease;
+  }
+  .card, .press-card, .partner-item, .btn, .btn-ghost::after, .site-nav, .nav-links {
+    transition-duration: 1ms !important;
+  }
+  .card:hover, .press-card:hover, .partner-item:hover, .btn:active {
+    transform: none;
   }
 }
 
