@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Archiving — Servants of Knowledge</title>
+<meta name="description" content="How Servants of Knowledge digitises India's books and manuscripts: open-hardware scanners, Indian-language OCR, the Repub pipeline, and open-access publishing.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/sok-logo.jpeg" alt="Servants of Knowledge emblem">
+      <span class="brand-word">Servants of Knowledge<small>Scanning is the New Spinning</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Digital Archiving</a></li>
+      <li><a href="press.html">Media Coverage</a></li>
+      <li><a href="partners.html">Partners</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="support.html" class="btn btn-primary">Support Us</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> / Digital Archiving</p>
+    <p class="eyebrow">Capabilities</p>
+    <h1>An open, end-to-end pipeline for digital archiving</h1>
+    <p class="lede">Every stage — the scanner, the software, the training, the hosting — is built to be open and replicable, so any library or institution in India can run it themselves.</p>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">The Workflow</p>
+      <h2>From a fragile shelf to a searchable page</h2>
+    </div>
+    <ol class="process-list reveal">
+      <li>
+        <h4>Intake & condition assessment</h4>
+        <p>Materials arrive from a source institution or donor and are logged with a unique item ID. Fragile items — brittle newsprint, insect-damaged pages, loose bindings — are flagged for extra care before anything is touched.</p>
+      </li>
+      <li>
+        <h4>Metadata entry</h4>
+        <p>Title, author, publisher, date, language, subject and physical condition are recorded against a standard template before scanning begins, so every item is findable the moment it's online.</p>
+      </li>
+      <li>
+        <h4>Scanning, on open hardware</h4>
+        <p>Books go on a book cradle to protect the spine; loose material lies flat. Overhead camera rigs with diffused LED lighting capture facing pages simultaneously — SoK's 18 self-built scanners do this at a combined pace of up to 15 lakh pages a month.</p>
+      </li>
+      <li>
+        <h4>OCR and post-processing</h4>
+        <p>Scans are run through Optical Character Recognition tuned for Indian scripts, producing Unicode text layers, hOCR word-level positioning, and multiple access formats. This step is being consolidated into <strong>Repub</strong>, SoK's open-source post-processing pipeline, launching publicly at IndiaFOSS 2026.</p>
+      </li>
+      <li>
+        <h4>Quality control</h4>
+        <p>Every image is checked for sharpness, exposure and completeness — no missing pages — before it moves to publication.</p>
+      </li>
+      <li>
+        <h4>Publish, under the right access model</h4>
+        <p>Public-domain works go straight onto the Internet Archive, searchable and downloadable by anyone. In-copyright material is made available within the law — typically to the institution's own students and researchers, or in accessible formats for the print-disabled.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal">
+        <p class="eyebrow">Open Hardware</p>
+        <h2>Scanners built in India, for India</h2>
+        <p>SoK's first three scanners were based on an open-source design from the Internet Archive. When COVID-era import restrictions made buying more impossible, the team reverse-engineered and improved on that design rather than wait. The rig that resulted — twin DSLR cameras on an overhead mount, 45°-angled diffused LED panels, a V-cradle for bound volumes, tethered capture straight to a laptop — needs no specialist operator and no imported parts.</p>
+        <p>Omshivaprakash puts the throughput at 5,000–10,000 pages per scanner a day — a thick volume finished in about an hour. The design is documented and replicated at every new SoK centre, including the one being mobilised in Mysuru.</p>
+        <div style="margin-top:20px">
+          <span class="tag">18 scanners in operation</span>
+          <span class="tag">Reverse-engineered, open design</span>
+          <span class="tag">No specialist training required</span>
+          <span class="tag">Up to 10,000 pages / scanner / day</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Open Software</p>
+        <h2>Repub: launching at IndiaFOSS 2026</h2>
+        <p>Repub is SoK's answer to the hardest part of digitisation — turning a raw scan into something actually usable. The moment a scanning session ends, Repub takes over and produces searchable PDFs with embedded OCR text layers, hOCR output for word-level positioning, structured metadata for cataloguing, and multiple end-user formats — all on commodity hardware, fully automatable.</p>
+        <p>Paired with SoK's open scanner hardware, Repub completes an end-to-end digitisation pipeline that any library, archive or cultural institution in India can adopt without vendor lock-in or institutional budgets. It will be released under an open licence, with source and documentation published ahead of the conference.</p>
+        <div style="margin-top:20px">
+          <span class="tag">Searchable PDFs</span>
+          <span class="tag">hOCR output</span>
+          <span class="tag">Structured metadata</span>
+          <span class="tag">Open source · CC BY-SA slides</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">The Collection</p>
+      <h2>Jai Gyan: Bharat Ek Khoj</h2>
+      <p class="lede">Everything SoK digitises that's in the public domain flows into this growing collection on the Internet Archive — India's version of a bottom-up public library, built one scanned page at a time.</p>
+    </div>
+    <div class="stat-grid reveal">
+      <div class="stat"><span class="num">1.3M+</span><span class="label">Items in the Jai Gyan collection — books, audio, video, magazines</span></div>
+      <div class="stat"><span class="num">7 lakh+</span><span class="label">Pages of Indian gazettes published online</span></div>
+      <div class="stat"><span class="num">6 lakh+</span><span class="label">Books online in Indian languages and English</span></div>
+      <div class="stat"><span class="num">20+</span><span class="label">Languages represented, including 60,000+ Sanskrit books</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Access & Copyright</p>
+      <h2>Open where it can be, protected where it must be</h2>
+      <p class="lede">SoK takes what its own legal director, Lawrence Liang, calls a conservative approach — digitising broadly, but publishing carefully, within Indian copyright law.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 3 7l9 4 9-4-9-4Z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div>
+        <h3>Public domain</h3>
+        <p>If a work is out of copyright, it goes straight online — free, searchable and downloadable by anyone in the world.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Print-disabled access</h3>
+        <p>In-copyright works are made available in accessible formats — Braille, DAISY, text-to-speech — under Section 52 exceptions for the visually challenged.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg></div>
+        <h3>Institutional access</h3>
+        <p>Copyrighted libraries — like NLSIU's law collection — are digitised in full but access is controlled by the owning institution's own librarians for its students and researchers.</p>
+      </div>
+    </div>
+    <div class="hero-quote reveal" style="max-width:760px;margin:36px auto 0">
+      “We are not pirates.” Publications of the Indian government, he argues, should be available universally — even as SoK is careful not to take every book and put it online.
+      <cite>Paraphrased from Carl Malamud, Founder — Frontline, December 2024</cite>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Where We Work</p>
+      <h2>Digitisation centres</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card reveal">
+        <h3>Gandhi Bhavan, Bengaluru</h3>
+        <p>SoK's flagship scan centre, housed on the second floor of Gandhi Bhavan since the pandemic. Capacity: 1.5 million pages a month. Completed the full 11,700-book Gandhi Bhavan library, 33,149 books for NLSIU, and is the base from which the Lalbagh, Azim Premji University and Hampi Kannada University collections are being processed.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Mysuru Digitisation Centre <span class="tag" style="margin-left:8px;vertical-align:middle">Mobilising</span></h3>
+        <p>A new centre focused on books & manuscripts, photos & slides, and documents & archives — following SoK's standard setup: overhead book scanners, book cradles, climate-controlled storage, and a trained local team, replicating the model proven at Gandhi Bhavan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-dark">
+  <div class="container center reveal" style="max-width:640px">
+    <p class="eyebrow" style="justify-content:center">Next Step</p>
+    <h2>This pipeline scales with funding, not ambition.</h2>
+    <p>Every additional scanner, every new centre, every trained technician moves SoK closer to Carl Malamud's stated goal: one crore pages a month, nationwide.</p>
+    <a href="support.html" class="btn btn-primary" style="margin-top:8px">See what your support funds</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="assets/img/sok-logo.jpeg" alt="Servants of Knowledge emblem">
+          <span>Servants of Knowledge</span>
+        </div>
+        <p>Make Knowledge Free — Spreading Knowledge Worldwide. A non-profit digitising India's books, manuscripts and archives under open access.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About & Team</a></li>
+          <li><a href="work.html">Digital Archiving</a></li>
+          <li><a href="press.html">Media Coverage</a></li>
+          <li><a href="partners.html">Partners & Collaborations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Involved</h4>
+        <ul>
+          <li><a href="support.html">Fund a Centre</a></li>
+          <li><a href="support.html#volunteer">Volunteer / Partner</a></li>
+          <li><a href="mailto:omshivaprakash@gmail.com">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://archive.org/details/GandhiBhavan" target="_blank" rel="noopener">Gandhi Bhavan Archive ↗</a></li>
+          <li><a href="https://indiankanoon.org" target="_blank" rel="noopener">Indian Kanoon ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Servants of Knowledge (Anubhava Mantapa Servants of Knowledge Association). Bengaluru, India.</span>
+      <span>Registered non-profit · Section 8 company</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
