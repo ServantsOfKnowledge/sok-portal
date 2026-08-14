@@ -29,26 +29,6 @@
   --radius-lg: 22px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f0d09;
-    --bg-elevated: #17140e;
-    --surface: #1c1811;
-    --surface-2: #251f15;
-    --ink: #f3ece0;
-    --ink-secondary: #cbbfa8;
-    --ink-tertiary: #948a72;
-    --gold: #d9ab5c;
-    --gold-bright: #e6bc74;
-    --terracotta: #dd875f;
-    --rule: rgba(243, 236, 224, 0.12);
-    --rule-strong: rgba(243, 236, 224, 0.22);
-    --nav-bg: rgba(15, 13, 9, 0.6);
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --shadow-color: 0 0 0;
-  }
-}
-
 * {
   box-sizing: border-box;
 }
@@ -151,9 +131,6 @@ p { margin: 0 0 1em; color: var(--ink-secondary); }
 .btn-primary {
   background: var(--ink);
   color: var(--bg);
-}
-@media (prefers-color-scheme: dark) {
-  .btn-primary { background: var(--gold-bright); color: #17140e; }
 }
 .btn-primary:hover { opacity: 0.85; }
 
