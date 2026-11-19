@@ -616,3 +616,28 @@ h1, h2, h3 { text-wrap: balance; }
 }
 @media (max-height: 760px) and (min-width: 1001px) { .abot > div:nth-child(2) { display: none; } .abot { grid-template-columns: 1.6fr 1fr; } }
 @media (max-height: 720px) and (min-width: 1001px) { .rep td { padding-top: 2px; padding-bottom: 2px; } .an { padding: 3px 8px; } .abot > div { padding: 6px 10px; } }
+
+/* Industry quadrant */
+.quad { display: grid; grid-template-columns: minmax(0, 1fr) clamp(220px, 21vw, 290px); gap: var(--gap); height: 100%; }
+.quad-plot { min-height: 0; min-width: 0; display: flex; }
+.qd { width: 100%; height: 100%; font-family: var(--font-body); }
+.qd .q-lo { fill: var(--soft); } .qd .q-hi { fill: #fbf4e4; }
+.qd .q-box { fill: none; stroke: var(--line-2); }
+.qd .q-corner { font: 700 10.5px var(--font-body); letter-spacing: 1.4px; fill: var(--ink-2); }
+.qd .q-axis { font: 700 12px var(--font-body); fill: var(--ink); }
+.qd .q-sub { font: 400 10px var(--font-body); fill: var(--ink-2); }
+.qd .q-l { font: 500 11.5px var(--font-body); fill: var(--ink); }
+.qd .q-l.q-sok { font: 800 14px var(--font-display); }
+.qd circle { stroke: #fff; stroke-width: 1.5; }
+.qd circle.c-sok { stroke: var(--gold); stroke-width: 3; }
+.c-sok { fill: var(--ink); } .c-repo { fill: #2b5f9e; } .c-disc { fill: #0e8a8a; } .c-ocr { fill: #a8650c; } .c-pres { fill: #7a3e8f; } .c-ils { fill: #b0413e; } .c-agg { fill: #6b7782; } .c-flow { fill: #8a7a1f; } .c-arch { fill: #4a6b2a; }
+.quad-side { display: flex; flex-direction: column; gap: 8px; min-height: 0; overflow: auto; }
+.quad-side h4 { margin: 0; font-family: var(--font-display); font-size: 1rem; }
+.quad-side p { margin: 0; font-size: max(.74rem, 1.3vh); line-height: 1.4; color: var(--ink-2); }
+.quad-side .q-note { padding: 8px 10px; border-left: 3px solid var(--gold); background: var(--soft); border-radius: 0 10px 10px 0; color: var(--ink); }
+.q-key { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: max(.78rem, 1.4vh); color: var(--ink); }
+.q-key li { display: flex; align-items: center; gap: 8px; }
+.q-key i { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+@media (max-width: 1000px) { .quad { grid-template-columns: 1fr; height: auto; } .qd { height: auto; min-width: 640px; } .quad-plot { overflow-x: auto; } }
+@media (max-height: 700px) and (min-width: 1001px) { .quad-side .q-how { display: none; } }
+.q-key .c-sok { background: var(--ink); box-shadow: 0 0 0 2px var(--gold); } .q-key .c-repo { background: #2b5f9e; } .q-key .c-disc { background: #0e8a8a; } .q-key .c-ocr { background: #a8650c; } .q-key .c-pres { background: #7a3e8f; } .q-key .c-ils { background: #b0413e; } .q-key .c-agg { background: #6b7782; } .q-key .c-flow { background: #8a7a1f; } .q-key .c-arch { background: #4a6b2a; }
