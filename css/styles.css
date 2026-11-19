@@ -447,3 +447,9 @@ html[data-dir="back"] { --from: -24px; }
   /* footer */
   .slim .container { padding-top: 10px; padding-bottom: 14px; }
 }
+
+/* ---- design review: keyboard focus ring (brass on white, white-gap on dark) ---- */
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 6px; }
+.btn:focus-visible, .tab:focus-visible, .pg:focus-visible, .node:focus-visible { outline-offset: 2px; border-radius: 999px; }
+.node:focus-visible { border-radius: 18px; }
+.dark-card :focus-visible, .btn-primary:focus-visible, .tab[aria-selected="true"]:focus-visible { outline-color: var(--gold); box-shadow: 0 0 0 4px var(--ink); }
