@@ -544,3 +544,32 @@ h1, h2, h3 { text-wrap: balance; }
 .chap p { margin: 0; font-size: .86rem; line-height: 1.45; }
 .chap.dark-card .who, .chap.dark-card .who b { color: var(--gold); }
 .chap .btn { align-self: flex-start; margin-top: auto; }
+
+/* Research Desk tabs */
+.rd { grid-template-rows: minmax(0, 1fr) auto; margin: 0; padding-bottom: 0; height: 100%; }
+.rd-built { padding-bottom: 0; }
+.shot { margin: 0; border: 1px solid var(--line-2); border-radius: 16px; overflow: hidden; background: var(--bg); box-shadow: 0 24px 40px -28px rgba(10,29,55,.45); }
+.shot-bar { display: flex; gap: 6px; padding: 9px 12px; background: var(--soft); border-bottom: 1px solid var(--line); }
+.shot-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-2); }
+.shot img { display: block; width: 100%; height: auto; max-height: calc(100dvh - 430px); min-height: 160px; object-fit: cover; object-position: top left; }
+.shot figcaption { padding: 8px 14px; font-size: .8rem; color: var(--ink-2); border-top: 1px solid var(--line); }
+#see .md { height: auto; }
+#see .md-item { align-self: start; }
+.doclinks { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.doclinks a { display: block; padding: clamp(2px, .7vh, 5px) 0; text-decoration: none; color: var(--ink); font-size: .92rem; font-weight: 600; border-bottom: 1px solid var(--line); }
+.doclinks a::after { content: " ↗"; color: var(--gold-ink); font-weight: 400; }
+.doclinks li:last-child a { border-bottom: 0; }
+.doclinks a:hover { color: var(--accent); }
+.doc-foot { margin: 14px 0 0; font-size: .86rem; color: var(--ink-2); }
+.doc-foot a { color: var(--accent); font-weight: 600; margin: 0 2px; }
+.fitgrid .mini { display: flex; flex-direction: column; gap: 8px; }
+.fitgrid h4 { margin: 0; font-family: var(--font-display); font-size: clamp(.95rem, 2vh, 1.1rem); }
+.inst { align-items: start; }
+.inst-steps { display: grid; gap: 12px; }
+.inst-steps h4 { margin: 0 0 4px; font-family: var(--font-display); }
+.inst-steps p { margin: 0; font-size: .88rem; }
+.inst-code pre { margin: 0; background: var(--ink); color: #e9edf4; border-radius: 16px; padding: 16px 18px; font: 500 .8rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow: auto; }
+.inst-code .c { color: rgba(233,237,244,.55); }
+.inst-note { margin: 12px 0 0; font-size: .86rem; color: var(--ink-2); }
+.inst-note a { color: var(--accent); font-weight: 600; }
+@media (max-width: 1000px) { .rd { height: auto; } .shot img { max-height: none; } }
