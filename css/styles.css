@@ -314,7 +314,7 @@ html[data-dir="back"] { --from: -24px; }
 @media (max-width: 1000px) { .rd { grid-template-rows: auto; } .rd-top, .conv, .rd-bot { grid-template-columns: 1fr; } .arrowcol { display: none; } .jobs { grid-template-columns: 1fr; } .rds { grid-template-columns: 1fr 1fr; grid-template-rows: auto; } .screen { overflow-y: auto; } }
 
 /* rotating second half of the home headline */
-.home h1 { font-size: clamp(1.8rem, 4.2vh + 1.2vw, 3.7rem); }
+.home h1 { font-size: clamp(1.8rem, 3.7vh + 1.1vw, 3.7rem); }
 .rot { display: grid; }
 .rot .r { grid-area: 1 / 1; opacity: 0; transform: translateY(.3em); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .rot .r.on { opacity: 1; transform: none; }
