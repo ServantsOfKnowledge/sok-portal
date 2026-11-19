@@ -3,7 +3,7 @@
   "use strict";
 
   // Page order: ← → keys, the footer arrows, dots and swipe all walk this list.
-  var PAGES = [["index.html", "Home"], ["infrastructure.html", "Infrastructure"], ["work.html", "Digitisation"], ["collections.html", "Collections"], ["research-desk.html", "Research Desk"], ["about.html", "About"], ["press.html", "Media"], ["events.html", "Events"], ["partners.html", "Partners"], ["support.html", "Donate"]];
+  var PAGES = [["index.html", "Home"], ["infrastructure.html", "Infrastructure"], ["work.html", "Digitisation"], ["collections.html", "Collections"], ["research-desk.html", "Research Desk"], ["about.html", "About"], ["press.html", "Media"], ["events.html", "Events"], ["publications.html", "Publications"], ["partners.html", "Partners"], ["support.html", "Donate"]];
   var here = location.pathname.split("/").pop() || "index.html";
   var at = PAGES.findIndex(function (p) { return p[0] === here; });
   function go(n) {
@@ -124,7 +124,7 @@
     var prev = document.getElementById("prev"), next = document.getElementById("next"), count = document.getElementById("count");
     var filter = "all", page = 0;
     function render() {
-      var list = cards.filter(function (c) { return filter === "all" ? c.getAttribute("data-year") !== "pub" : c.getAttribute("data-year") === filter; });
+      var list = cards.filter(function (c) { return filter === "all" || c.getAttribute("data-year") === filter; });
       var cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
       cards.forEach(function (c) { c.style.display = ""; });
       var h = cards[0].offsetHeight || 150, gap = parseFloat(getComputedStyle(grid).rowGap) || 14;
@@ -133,7 +133,7 @@
       page = Math.min(page, pages - 1);
       cards.forEach(function (c) { c.style.display = "none"; });
       list.slice(page * size, page * size + size).forEach(function (c) { c.style.display = ""; });
-      count.textContent = "Page " + (page + 1) + " of " + pages + " · " + list.length + (filter === "pub" ? " publications" : " articles");
+      count.textContent = "Page " + (page + 1) + " of " + pages + " · " + list.length + " articles";
       prev.disabled = page === 0; next.disabled = page >= pages - 1;
     }
     pills.forEach(function (p) {
