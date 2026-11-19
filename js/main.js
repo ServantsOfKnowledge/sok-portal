@@ -50,6 +50,18 @@
     }, 5200);
   }
 
+  // Videos: click to play inside the card (privacy-friendly embed); modifier-click still opens YouTube.
+  document.querySelectorAll('.vcard[href*="youtube.com/watch"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      var id = (a.href.match(/[?&]v=([\w-]{11})/) || [])[1], t = a.querySelector(".thumb");
+      if (!id || !t) return;
+      e.preventDefault();
+      t.classList.add("playing");
+      t.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    });
+  });
+
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
 
@@ -112,7 +124,7 @@
     var prev = document.getElementById("prev"), next = document.getElementById("next"), count = document.getElementById("count");
     var filter = "all", page = 0;
     function render() {
-      var list = cards.filter(function (c) { return filter === "all" || c.getAttribute("data-year") === filter; });
+      var list = cards.filter(function (c) { return filter === "all" ? c.getAttribute("data-year") !== "pub" : c.getAttribute("data-year") === filter; });
       var cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
       cards.forEach(function (c) { c.style.display = ""; });
       var h = cards[0].offsetHeight || 150, gap = parseFloat(getComputedStyle(grid).rowGap) || 14;
@@ -121,7 +133,7 @@
       page = Math.min(page, pages - 1);
       cards.forEach(function (c) { c.style.display = "none"; });
       list.slice(page * size, page * size + size).forEach(function (c) { c.style.display = ""; });
-      count.textContent = "Page " + (page + 1) + " of " + pages + " · " + list.length + " articles";
+      count.textContent = "Page " + (page + 1) + " of " + pages + " · " + list.length + (filter === "pub" ? " publications" : " articles");
       prev.disabled = page === 0; next.disabled = page >= pages - 1;
     }
     pills.forEach(function (p) {
