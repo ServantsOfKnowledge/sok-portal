@@ -496,3 +496,4 @@ h1, h2, h3 { text-wrap: balance; }
   .vcard .thumb { aspect-ratio: 16 / 9; }
   .ev-list li { padding: 10px 0; }
 }
+.ev-list li a { color: var(--accent); font-weight: 600; white-space: nowrap; }
