@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;700&display=swap");
 
 :root {
-  --bg: #fff; --soft: #f5f4f1; --ink: #0a1d37; --ink-2: #4a4f57; --ink-3: #80858c;
+  --bg: #fff; --soft: #f5f4f1; --ink: #0a1d37; --ink-2: #4a4f57; --ink-3: #686d75;
   --accent: #906030; --gold-ink: #a8741c; --gold: #d8a848; --rust: #b85a2c;
   --line: rgba(11,14,19,.12); --line-2: rgba(11,14,19,.24);
   --font-display: "Bricolage Grotesque", system-ui, sans-serif;
