@@ -458,3 +458,17 @@ html[data-dir="back"] { --from: -24px; }
 .eyebrow, .mini .k, .state, .tag, .lay .stage, .press-meta, .hero-photo figcaption, .chain5 small, .node small, .dg-pic figcaption, .strip .k, .five .k, .hub .k, .rd-bot .k, .md-list button b, .press-card .read-more, .archived-label { font-size: .75rem; }
 .pt span, .cc-meta span, .pill5 span { font-size: max(.72rem, 1.2vh); }
 .brand-word small { font-size: .62rem; }
+
+/* ---- design review: 44px touch targets on phones, balanced headings, no transition:all ---- */
+@media (max-width: 760px) {
+  .tab { padding: 11px 16px; }
+  .dots a { padding: 19px 4px; } .dots { gap: 0; }
+  .pg { width: 44px; height: 44px; }
+  .nav-toggle { padding: 10px; }
+  .btn { min-height: 44px; }
+  .pager button { min-height: 44px; }
+  .press-card .read-more { display: inline-block; padding: 8px 0; }
+}
+h1, h2, h3 { text-wrap: balance; }
+.tab { transition: background-color 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease); }
+.dots i { transition: width 200ms var(--ease), background-color 200ms var(--ease), border-radius 200ms var(--ease); }
