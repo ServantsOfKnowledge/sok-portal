@@ -3,7 +3,7 @@
   "use strict";
 
   // Page order: ← → keys, the footer arrows, dots and swipe all walk this list.
-  var PAGES = [["index.html", "Home"], ["infrastructure.html", "Infrastructure"], ["work.html", "Digitisation"], ["collections.html", "Collections"], ["research-desk.html", "Research Desk"], ["about.html", "About"], ["press.html", "Media"], ["partners.html", "Partners"], ["support.html", "Donate"]];
+  var PAGES = [["index.html", "Home"], ["infrastructure.html", "Infrastructure"], ["work.html", "Digitisation"], ["collections.html", "Collections"], ["research-desk.html", "Research Desk"], ["about.html", "About"], ["press.html", "Media"], ["events.html", "Events"], ["partners.html", "Partners"], ["support.html", "Donate"]];
   var here = location.pathname.split("/").pop() || "index.html";
   var at = PAGES.findIndex(function (p) { return p[0] === here; });
   function go(n) {

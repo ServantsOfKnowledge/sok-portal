@@ -472,3 +472,27 @@ html[data-dir="back"] { --from: -24px; }
 h1, h2, h3 { text-wrap: balance; }
 .tab { transition: background-color 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease); }
 .dots i { transition: width 200ms var(--ease), background-color 200ms var(--ease), border-radius 200ms var(--ease); }
+
+/* Events & videos page */
+.ev { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--gap); }
+.ev .k { display: block; font: 700 .75rem/1 var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.ev-vid { display: flex; flex-direction: column; min-height: 0; }
+.ev-vgrid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: minmax(0, 1fr); gap: 10px; }
+.vcard { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; background: var(--bg); transition: transform .2s ease, box-shadow .2s ease; }
+.vcard:hover { transform: translateY(-3px); box-shadow: 0 16px 30px -16px rgba(11,14,19,.25); }
+.vcard .thumb { min-height: 0; border-radius: 0; }
+.vcard .thumb::after { content: "▶"; position: absolute; left: 50%; top: 50%; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; background: rgba(10,29,55,.78); color: #fff; font-size: .8rem; display: flex; align-items: center; justify-content: center; padding-left: 2px; }
+.vcard .vb { padding: 7px 12px 8px; }
+.vcard .vb b { display: block; font-size: .82rem; line-height: 1.2; }
+.vcard .vb span { display: block; font-size: .75rem; line-height: 1.3; color: var(--ink-3); margin-top: 2px; }
+.ev-list { min-height: 0; display: flex; flex-direction: column; }
+.ev-list ol { list-style: none; margin: 0; padding: 0; flex: 1; min-height: 0; display: grid; grid-auto-rows: minmax(0, 1fr); }
+.ev-list li { display: grid; grid-template-columns: 66px 1fr; gap: 10px; align-items: center; border-bottom: 1px solid var(--line); font-size: .8rem; line-height: 1.3; color: var(--ink-2); }
+.ev-list li b { font: 700 .74rem var(--font-display); letter-spacing: .04em; color: var(--accent); }
+.ev-list li em { font-style: normal; font-weight: 700; color: var(--ink); }
+@media (max-width: 760px) {
+  .ev { display: block; }
+  .ev-vgrid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
+  .vcard .thumb { aspect-ratio: 16 / 9; }
+  .ev-list li { padding: 10px 0; }
+}
