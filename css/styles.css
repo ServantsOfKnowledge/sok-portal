@@ -50,7 +50,7 @@ p { margin: 0 0 .8em; color: var(--ink-2); }
 .nav-cta .btn { padding: 9px 22px; font-size: .86rem; }
 .nav-toggle { display: none; background: none; border: 0; padding: 8px; cursor: pointer; color: var(--ink); }
 .nav-toggle svg { width: 24px; height: 24px; }
-@media (max-width: 960px) {
+@media (max-width: 1199px) {
   .nav-links { position: fixed; inset: 60px 0 0 0; background: #fff; flex-direction: column; padding: 28px 24px; gap: 20px; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 220ms var(--ease), transform 220ms var(--ease); }
   .nav-links a { font: 700 1.5rem/1.2 var(--font-display); color: var(--ink); }
   body.nav-open .nav-links { opacity: 1; transform: none; pointer-events: auto; }
@@ -533,3 +533,14 @@ h1, h2, h3 { text-wrap: balance; }
 .md-pic::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,29,55,.7), rgba(10,29,55,0) 45%); pointer-events: none; }
 .md-pic figcaption { z-index: 1; }
 .tile-pic { display: block; width: 100%; height: clamp(60px, 12vh, 130px); object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
+
+/* About: who it helps */
+.story-head { max-width: 78ch; margin-bottom: clamp(10px, 2vh, 20px); }
+.story-head h2 { margin: .1em 0 .3em; }
+.story-head p:not(.eyebrow) { font-size: .95rem; }
+.chap { display: flex; flex-direction: column; gap: 6px; }
+.chap .who { font: 700 .95rem/1.25 var(--font-display); color: var(--ink); display: flex; gap: 8px; align-items: baseline; }
+.chap .who b { font: 800 .8rem var(--font-display); letter-spacing: .04em; color: var(--accent); }
+.chap p { margin: 0; font-size: .86rem; line-height: 1.45; }
+.chap.dark-card .who, .chap.dark-card .who b { color: var(--gold); }
+.chap .btn { align-self: flex-start; margin-top: auto; }
