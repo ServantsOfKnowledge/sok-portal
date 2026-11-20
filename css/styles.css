@@ -676,3 +676,7 @@ html[lang="kn"] .cc-meta b { overflow-wrap: break-word; }
 html[lang="kn"] .detail .text p { font-size: clamp(.8rem, 1.55vh, 1rem); line-height: 1.5; }
 html[lang="kn"] .d-gap { font-size: clamp(1rem, 2.6vh, 1.6rem); }
 html[lang="kn"] .detail .facts li { font-size: clamp(.78rem, 1.5vh, .95rem); line-height: 1.45; }
+.avatar:has(img) { background: #fff; border: 1px solid var(--line); }
+/* keep the nav on one line now that the language switch shares it */
+.nav-links a, .brand-word { white-space: nowrap; }
+@media (min-width: 1200px) { .nav-links { gap: clamp(10px, 1.25vw, 24px); } .nav-links a { font-size: clamp(.8rem, .75vw + .1rem, .88rem); } }
