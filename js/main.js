@@ -43,7 +43,7 @@
     });
   }
 
-  // Home headline: the three messages take turns; hovering the text pauses it.
+  // Home headline: the six messages take turns (three standalone, three that follow the opening phrase); hovering the text pauses it.
   var rot = document.querySelectorAll(".rot .r");
   if (rot.length > 1) {
     var ri = 0, paused = false, hero = document.querySelector(".home .copy");

@@ -169,6 +169,7 @@ a.press-card:hover { transform: translateY(-3px); box-shadow: 0 16px 30px -16px 
 .home .copy { display: flex; flex-direction: column; justify-content: center; min-height: 0; }
 .home h1 { color: var(--ink); font-size: clamp(1.9rem, 4.6vh + 1.3vw, 4rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.02; margin: 0 0 .4em; }
 .home h1 em { font-style: normal; color: var(--gold-ink); }
+.home h1 .pre { color: var(--ink); }
 .home .lede { color: var(--ink-2); font-size: clamp(.95rem, 1.7vh + .3vw, 1.15rem); max-width: 56ch; }
 .home .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: clamp(10px, 2vh, 24px); }
 .hero-photo { position: relative; margin: 0; min-height: 0; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); }
