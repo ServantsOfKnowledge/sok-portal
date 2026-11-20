@@ -103,6 +103,20 @@
     });
   });
 
+  // ↑ ↓ step through the items on the page (list items, then tabs); ← → still change page.
+  // Desktop only: below 1001px panels scroll, and the arrows should keep scrolling them.
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    if ((e.key !== "ArrowDown" && e.key !== "ArrowUp") || !window.matchMedia("(min-width: 1001px)").matches) return;
+    var d = e.key === "ArrowDown" ? 1 : -1;
+    var panel = document.querySelector(".panel.active") || document;
+    var md = panel.querySelector(".md"), items = md ? Array.prototype.slice.call(md.querySelectorAll("[data-md]")) : [];
+    var i = items.findIndex(function (b) { return b.getAttribute("aria-selected") === "true"; });
+    if (items.length && i + d >= 0 && i + d < items.length) { items[i + d].click(); e.preventDefault(); return; }
+    var t = tabs.findIndex(function (x) { return x.getAttribute("aria-selected") === "true"; });
+    if (t >= 0 && t + d >= 0 && t + d < tabs.length) { tabs[t + d].click(); e.preventDefault(); }
+  });
+
   // Partners: filter chips dim the other categories (everything stays on screen).
   var pg = document.querySelector(".pgrid");
   if (pg) {
