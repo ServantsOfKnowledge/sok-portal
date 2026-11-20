@@ -48,6 +48,21 @@
   if (rot.length > 1) {
     var ri = 0, paused = false, hero = document.querySelector(".home .copy");
     if (hero) { hero.addEventListener("mouseenter", function () { paused = true; }); hero.addEventListener("mouseleave", function () { paused = false; }); }
+    // The box is as tall as the longest message; shorter ones grow (up to 1.5x) to fill it.
+    var fit = function () {
+      var box = document.querySelector(".rot"); box.style.height = "";
+      rot.forEach(function (r) { r.style.fontSize = ""; });
+      var H = Math.max.apply(null, Array.prototype.map.call(rot, function (r) { return r.offsetHeight; }));
+      box.style.height = H + "px";
+      rot.forEach(function (r) {
+        var lo = parseFloat(getComputedStyle(r).fontSize), hi = lo * 1.5;
+        for (var k = 0; k < 8; k++) { var m = (lo + hi) / 2; r.style.fontSize = m + "px"; if (r.offsetHeight <= H) lo = m; else hi = m; }
+        r.style.fontSize = lo + "px";
+      });
+    }, ft;
+    fit();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    window.addEventListener("resize", function () { clearTimeout(ft); ft = setTimeout(fit, 120); });
     setInterval(function () {
       if (paused) return;
       rot[ri].classList.remove("on"); rot[ri].setAttribute("aria-hidden", "true");

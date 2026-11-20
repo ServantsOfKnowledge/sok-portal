@@ -322,7 +322,7 @@ html[data-dir="back"] { --from: -24px; }
 /* rotating second half of the home headline */
 .home h1 { font-size: clamp(1.8rem, 3.7vh + 1.1vw, 3.7rem); }
 .rot { display: grid; }
-.rot .r { grid-area: 1 / 1; opacity: 0; transform: translateY(.3em); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.rot .r { grid-area: 1 / 1; align-self: start; opacity: 0; transform: translateY(.3em); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .rot .r.on { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .rot .r { transform: none; transition: opacity .5s linear; } }
 
