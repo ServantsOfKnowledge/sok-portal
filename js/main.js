@@ -118,8 +118,9 @@
     var md = panel.querySelector(".md"), items = md ? Array.prototype.slice.call(md.querySelectorAll("[data-md]")) : [];
     var i = items.findIndex(function (b) { return b.getAttribute("aria-selected") === "true"; });
     if (items.length && i + d >= 0 && i + d < items.length) { items[i + d].click(); e.preventDefault(); return; }
-    var t = tabs.findIndex(function (x) { return x.getAttribute("aria-selected") === "true"; });
-    if (t >= 0 && t + d >= 0 && t + d < tabs.length) { tabs[t + d].click(); e.preventDefault(); }
+    var steps = tabs.length ? tabs : Array.prototype.slice.call(document.querySelectorAll(".pf")); // Partners: filter chips
+    var t = steps.findIndex(function (x) { return x.getAttribute("aria-selected") === "true"; });
+    if (t >= 0 && t + d >= 0 && t + d < steps.length) { steps[t + d].click(); e.preventDefault(); }
   });
 
   // Partners: filter chips dim the other categories (everything stays on screen).
