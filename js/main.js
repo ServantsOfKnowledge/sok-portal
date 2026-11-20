@@ -158,6 +158,14 @@
     });
     prev.addEventListener("click", function () { page--; render(); });
     next.addEventListener("click", function () { page++; render(); });
+    // ↓ ↑: next/previous page of articles, then the next/previous year (paging is off on phones).
+    document.addEventListener("keydown", function (e) {
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || (e.key !== "ArrowDown" && e.key !== "ArrowUp") || !window.matchMedia("(min-width: 761px)").matches) return;
+      var d = e.key === "ArrowDown" ? 1 : -1, btn = d > 0 ? next : prev;
+      var cur = Array.prototype.findIndex.call(pills, function (x) { return x.getAttribute("aria-selected") === "true"; });
+      if (!btn.disabled) btn.click(); else if (pills[cur + d]) { pills[cur + d].click(); if (d < 0) { while (!next.disabled) next.click(); } } else return;
+      e.preventDefault();
+    });
     window.addEventListener("resize", render);
     render();
   }
