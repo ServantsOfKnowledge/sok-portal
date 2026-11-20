@@ -3,12 +3,13 @@
   "use strict";
 
   // Page order: ← → keys, the footer arrows, dots and swipe all walk this list.
-  var PAGES = [["index.html", "Home"], ["infrastructure.html", "Infrastructure"], ["work.html", "Digitisation"], ["collections.html", "Collections"], ["research-desk.html", "Research Desk"], ["about.html", "About"], ["press.html", "Media"], ["events.html", "Events"], ["publications.html", "Publications"], ["partners.html", "Partners"], ["support.html", "Donate"]];
-  var here = location.pathname.split("/").pop() || "index.html";
-  // Kannada pages live in /kn/. Pages not translated yet link to the English page one level up.
-  var inKn = /\/kn\/[^\/]*$/.test(location.pathname), TR = PAGES.map(function (p) { return p[0]; });
+  var PAGES = [["index", "Home"], ["infrastructure", "Infrastructure"], ["work", "Digitisation"], ["collections", "Collections"], ["research-desk", "Research Desk"], ["about", "About"], ["press", "Media"], ["events", "Events"], ["publications", "Publications"], ["partners", "Partners"], ["support", "Donate"]];
+  // Addresses carry no .html: "about", and "./" for the home page of the current folder (English at the root, Kannada in /kn/).
+  function norm(h) { return (h || "").replace(/#.*$/, "").replace(/^\.\//, "").replace(/\.html$/, "") || "index"; }
+  var here = norm(location.pathname.split("/").pop());
+  var inKn = /\/kn\/[^\/]*$/.test(location.pathname);
   var KN = ["ಮುಖಪುಟ", "ಮೂಲಸೌಕರ್ಯ", "ಡಿಜಿಟಲೀಕರಣ", "ಸಂಗ್ರಹಗಳು", "Research Desk", "ನಮ್ಮ ಬಗ್ಗೆ", "ಮಾಧ್ಯಮ", "ಕಾರ್ಯಕ್ರಮಗಳು", "ಪ್ರಕಟಣೆಗಳು", "ಪಾಲುದಾರರು", "ದೇಣಿಗೆ ನೀಡಿ"];
-  function U(i) { var f = PAGES[i][0]; return inKn && TR.indexOf(f) < 0 ? "../" + f : f; }
+  function U(i) { return PAGES[i][0] === "index" ? "./" : PAGES[i][0]; }
   function T(i) { return inKn ? KN[i] : PAGES[i][1]; }
   var at = PAGES.findIndex(function (p) { return p[0] === here; });
   function go(n) {
@@ -20,7 +21,7 @@
   var prevA = document.querySelector(".pg.prev"), nextA = document.querySelector(".pg.next");
   if (prevA) { if (at > 0) { prevA.href = U(at - 1); prevA.title = T(at - 1); prevA.addEventListener("click", function () { try { sessionStorage.setItem("dir", "back"); } catch (e) {} }); } else prevA.classList.add("off"); }
   if (nextA) { if (at >= 0 && at < PAGES.length - 1) { nextA.href = U(at + 1); nextA.title = T(at + 1); nextA.addEventListener("click", function () { try { sessionStorage.setItem("dir", "fwd"); } catch (e) {} }); } else nextA.classList.add("off"); }
-  document.querySelectorAll(".dots a").forEach(function (a) { if (a.getAttribute("href") === here) a.setAttribute("aria-current", "page"); });
+  document.querySelectorAll(".dots a").forEach(function (a) { if (norm(a.getAttribute("href")) === here) a.setAttribute("aria-current", "page"); });
   document.addEventListener("keydown", function (e) {
     if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
     if (e.key === "ArrowRight") go(at + 1); else if (e.key === "ArrowLeft") go(at - 1);
@@ -70,9 +71,8 @@
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
 
-  var path = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach(function (a) {
-    if (a.getAttribute("href") === path) a.setAttribute("aria-current", "page");
+    if (norm(a.getAttribute("href")) === here && !/^\.\./.test(a.getAttribute("href"))) a.setAttribute("aria-current", "page");
   });
 
   // Tabs: <button class="tab" data-tab="id"> shows <section class="panel" id="id">.
