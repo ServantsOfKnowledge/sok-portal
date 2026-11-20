@@ -43,7 +43,7 @@
     });
   }
 
-  // Home headline: the two promises take turns; hovering the text pauses it.
+  // Home headline: the three messages take turns; hovering the text pauses it.
   var rot = document.querySelectorAll(".rot .r");
   if (rot.length > 1) {
     var ri = 0, paused = false, hero = document.querySelector(".home .copy");
