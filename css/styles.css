@@ -695,3 +695,17 @@ html[lang="kn"] .brand-word small { letter-spacing: .16em !important; }
 .hint-tip kbd { display: inline-block; min-width: 1.5em; margin: 0 2px; padding: 1px 5px; border: 1px solid rgba(255,255,255,.35); border-bottom-width: 2px; border-radius: 5px; font: 600 .78rem/1.3 var(--font-body); color: var(--gold); }
 @media (max-width: 760px) { .hint-tip { bottom: 84px; border-radius: 16px; } }
 @media (prefers-reduced-motion: reduce) { .hint-tip { transition: opacity .2s linear; transform: translate(-50%, 0); } }
+
+/* Game-style navigation pad: nearly transparent until hovered or used */
+.dpad { position: fixed; right: 18px; bottom: 56px; z-index: 55; display: none; grid-template: repeat(3, 26px) / repeat(3, 26px); gap: 2px; opacity: .32; transition: opacity .25s var(--ease); }
+.dpad:hover, .dpad:focus-within { opacity: .95; }
+.dp { width: 26px; height: 26px; padding: 0; border: 0; border-radius: 7px; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; font: 700 .72rem/1 var(--font-body); transition: background-color .15s var(--ease), color .15s var(--ease), transform .15s var(--ease); }
+.dp svg { width: 18px; height: 18px; }
+.dp:hover { background: var(--gold-ink); }
+.dp.hit { background: var(--gold); color: var(--ink); transform: scale(1.12); }
+.dp.off { opacity: .35; pointer-events: none; }
+.dp-up { grid-area: 1 / 2; } .dp-left { grid-area: 2 / 1; } .dp-help { grid-area: 2 / 2; border-radius: 50%; background: transparent; color: var(--ink); border: 1px solid var(--ink); } .dp-right { grid-area: 2 / 3; } .dp-down { grid-area: 3 / 2; }
+.dp-left svg { transform: rotate(-90deg); } .dp-right svg { transform: rotate(90deg); } .dp-down svg { transform: rotate(180deg); }
+@media (min-width: 761px) { .dpad { display: grid; } body.has-dpad .hint-btn { display: none; } .hint-tip { bottom: 62px; } }
+@media (prefers-reduced-motion: reduce) { .dp { transition: none; } }
+@media (max-width: 1000px) { .dp-up, .dp-down { visibility: hidden; } } /* up/down only step through items on wider screens */

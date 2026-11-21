@@ -53,7 +53,33 @@
       hintBtn.setAttribute("aria-expanded", "true");
       clearTimeout(tipTimer); tipTimer = setTimeout(hideTip, 7000);
     };
-    hintBtn.addEventListener("click", function () { if (tip && tip.classList.contains("on")) hideTip(); else showTip(); });
+    var toggleTip = function () { if (tip && tip.classList.contains("on")) hideTip(); else showTip(); };
+    hintBtn.addEventListener("click", toggleTip);
+
+    // Game-style pad (tablet and desktop): nearly transparent, solid on hover. Buttons send the same keys as the keyboard,
+    // and each arrow lights up when its key is pressed so people learn the keys. Phones keep the footer "?" and swipe.
+    var NAV = { ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right" };
+    var LBL = inKn ? { up: "ಮೇಲೆ", down: "ಕೆಳಗೆ", left: "ಹಿಂದಿನ ಪುಟ", right: "ಮುಂದಿನ ಪುಟ", help: "ಸಾಗುವುದು ಹೇಗೆ" } : { up: "Up within the page", down: "Down within the page", left: "Previous page", right: "Next page", help: "How to move around" };
+    var pad = document.createElement("div"); pad.className = "dpad"; pad.setAttribute("role", "group"); pad.setAttribute("aria-label", inKn ? "ಸಂಚರಣೆ" : "Navigation");
+    var chev = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14l5-5 5 5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    ["up", "left", "help", "right", "down"].forEach(function (d) {
+      var b = document.createElement("button"); b.type = "button"; b.className = "dp dp-" + d; b.setAttribute("aria-label", LBL[d]); b.title = LBL[d];
+      b.innerHTML = d === "help" ? "?" : chev;
+      b.addEventListener("click", function () {
+        if (d === "help") { toggleTip(); return; }
+        var key = d === "up" ? "ArrowUp" : d === "down" ? "ArrowDown" : d === "left" ? "ArrowLeft" : "ArrowRight";
+        document.dispatchEvent(new KeyboardEvent("keydown", { key: key, bubbles: true, cancelable: true }));
+      });
+      pad.appendChild(b);
+    });
+    if (at <= 0) pad.querySelector(".dp-left").classList.add("off");
+    if (at < 0 || at >= PAGES.length - 1) pad.querySelector(".dp-right").classList.add("off");
+    if (!document.querySelector("[data-tab], .md, .pf, .press-grid")) { pad.querySelector(".dp-up").classList.add("off"); pad.querySelector(".dp-down").classList.add("off"); }
+    document.body.appendChild(pad); document.body.classList.add("has-dpad");
+    document.addEventListener("keydown", function (e) {
+      var d = NAV[e.key]; if (!d || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+      var b = pad.querySelector(".dp-" + d); b.classList.add("hit"); setTimeout(function () { b.classList.remove("hit"); }, 260);
+    });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") hideTip(); });
     var seen = false; try { seen = !!localStorage.getItem("sokHint"); } catch (e) {}
     if (!seen) { try { localStorage.setItem("sokHint", "1"); } catch (e) {} setTimeout(showTip, 1500); }
