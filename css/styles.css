@@ -720,3 +720,20 @@ html[lang="kn"] .brand-word small { letter-spacing: .16em !important; }
   body.has-dpad { padding-bottom: 72px; }
   .hint-tip { bottom: 76px; }
 }
+
+/* Phone header: brand name at a readable size with its tagline; language pill, Donate and menu are one height */
+@media (max-width: 600px) {
+  .brand { gap: 8px; } .brand img { width: 34px; height: 34px; }
+  html[lang] .brand-word { font-size: 16px; line-height: 1.15; }
+  html[lang] .brand-word small { display: block; font-size: 8px; line-height: 1.5; letter-spacing: .06em !important; }
+  .nav-cta { gap: 6px; }
+  .nav-cta .btn { display: none; }
+  .nav-cta .lang { box-sizing: border-box; height: 36px; min-height: 36px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; font-size: .78rem; line-height: 1; border-radius: 999px; }
+  .nav-cta .lang { border: 1px solid var(--line-2); text-decoration: none; }
+  .nav-toggle { width: 36px; height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center; margin-left: 2px; }
+}
+.nav-links .nav-donate { display: none; }
+@media (max-width: 600px) { .nav-links .nav-donate { display: block; margin-top: 8px; } .nav-links .nav-donate a { font: 600 1rem/1 var(--font-body); color: #fff; display: inline-flex; padding: 0 28px; } }
+@media (max-width: 375px) { html[lang] .brand-word { font-size: 15.5px; } html[lang] .brand-word small { font-size: 7.8px; } .nav-cta .lang { padding: 0 10px; } .nav-toggle { margin-left: 0; } }
+@media (min-width: 390px) and (max-width: 600px) { html[lang] .brand-word { font-size: 17.5px; } html[lang] .brand-word small { font-size: 8.8px; } }
+@media (max-width: 350px) { html[lang] .brand-word { font-size: 14px; } html[lang] .brand-word small { font-size: 7px; } .brand img { width: 30px; height: 30px; } }

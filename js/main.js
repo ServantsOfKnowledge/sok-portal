@@ -90,6 +90,9 @@
     toggle.addEventListener("click", function () {
       toggle.setAttribute("aria-expanded", document.body.classList.toggle("nav-open") ? "true" : "false");
     });
+    // Phones: the header has no room for Donate, so the menu carries it (hidden by CSS above 600px).
+    var navList = document.querySelector(".nav-links"), donate = document.querySelector(".nav-cta .btn");
+    if (navList && donate) { var dli = document.createElement("li"); dli.className = "nav-donate"; var da = document.createElement("a"); da.className = "btn btn-primary"; da.href = donate.getAttribute("href"); da.textContent = donate.textContent; dli.appendChild(da); navList.appendChild(dli); }
     document.querySelectorAll(".nav-links a").forEach(function (a) {
       a.addEventListener("click", function () { document.body.classList.remove("nav-open"); });
     });
