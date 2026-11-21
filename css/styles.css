@@ -709,3 +709,14 @@ html[lang="kn"] .brand-word small { letter-spacing: .16em !important; }
 @media (min-width: 761px) { .dpad { display: grid; } body.has-dpad .hint-btn { display: none; } .hint-tip { bottom: 62px; } }
 @media (prefers-reduced-motion: reduce) { .dp { transition: none; } }
 @media (max-width: 1000px) { .dp-up, .dp-down { visibility: hidden; } } /* up/down only step through items on wider screens */
+/* Phones: the same pad, reduced to ← ? → (up/down are plain scrolling here) */
+@media (max-width: 760px) {
+  .dpad { display: grid; grid-template: 44px / repeat(3, 44px); gap: 6px; right: 12px; bottom: 16px; opacity: .55; }
+  .dp { width: 44px; height: 44px; border-radius: 12px; }
+  .dp svg { width: 24px; height: 24px; } .dp-help { font-size: .9rem; }
+  .dp-up, .dp-down { display: none; }
+  .dp-left { grid-area: 1 / 1; } .dp-help { grid-area: 1 / 2; } .dp-right { grid-area: 1 / 3; }
+  body.has-dpad .hint-btn { display: none; }
+  body.has-dpad { padding-bottom: 72px; }
+  .hint-tip { bottom: 76px; }
+}
