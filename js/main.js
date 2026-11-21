@@ -33,6 +33,32 @@
     if (Math.abs(dx) > 70 && Math.abs(dy) < 50) go(dx < 0 ? at + 1 : at - 1);
   }, { passive: true });
 
+  // "?" button beside the footer arrows: tells people they can swipe or use the arrow keys.
+  // Shown once on a first visit (remembered in localStorage), and again whenever "?" is pressed.
+  var pagerNav = document.querySelector(".pager-nav");
+  if (pagerNav) {
+    var touch = window.matchMedia("(hover: none)").matches, tip = null, tipTimer;
+    var hintBtn = document.createElement("button");
+    hintBtn.type = "button"; hintBtn.className = "pg hint-btn"; hintBtn.textContent = "?";
+    hintBtn.setAttribute("aria-label", inKn ? "ಸಾಗುವುದು ಹೇಗೆ" : "How to move around"); hintBtn.setAttribute("aria-expanded", "false");
+    pagerNav.appendChild(hintBtn);
+    var hideTip = function () { clearTimeout(tipTimer); if (tip) tip.classList.remove("on"); hintBtn.setAttribute("aria-expanded", "false"); };
+    var showTip = function () {
+      if (!tip) { tip = document.createElement("div"); tip.className = "hint-tip"; tip.setAttribute("role", "status"); document.body.appendChild(tip); }
+      var lr = "<kbd>←</kbd><kbd>→</kbd>", ud = "<kbd>↑</kbd><kbd>↓</kbd>", rows = window.matchMedia("(min-width: 1001px)").matches;
+      tip.innerHTML = touch
+        ? (inKn ? "ಪುಟ ಬದಲಿಸಲು ಎಡ ಅಥವಾ ಬಲಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ " : "Swipe left or right to change page ") + lr
+        : (inKn ? "ಪುಟ ಬದಲಿಸಲು " + lr + (rows ? " · ಪುಟದೊಳಗೆ ಸಾಗಲು " + ud : "") : "Change page " + lr + (rows ? " · Move within a page " + ud : ""));
+      requestAnimationFrame(function () { tip.classList.add("on"); });
+      hintBtn.setAttribute("aria-expanded", "true");
+      clearTimeout(tipTimer); tipTimer = setTimeout(hideTip, 7000);
+    };
+    hintBtn.addEventListener("click", function () { if (tip && tip.classList.contains("on")) hideTip(); else showTip(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") hideTip(); });
+    var seen = false; try { seen = !!localStorage.getItem("sokHint"); } catch (e) {}
+    if (!seen) { try { localStorage.setItem("sokHint", "1"); } catch (e) {} setTimeout(showTip, 1500); }
+  }
+
   var toggle = document.querySelector(".nav-toggle");
   if (toggle) {
     toggle.addEventListener("click", function () {
