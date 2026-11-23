@@ -921,3 +921,4 @@ html[lang="kn"] .voices .k { letter-spacing: 0; text-transform: none; font-size:
 @media (max-width: 1199px) { .nav-links .nav-extra { display: block; } }
 @media (max-width: 1000px) { .eg { grid-template-columns: 1fr; } .eg-page { grid-template-rows: auto; } .eg .shot img { max-height: none; height: auto; } }
 .eg-link { align-self: center; margin-left: 4px; white-space: nowrap; }
+.voice figcaption span { display: block; margin-top: 1px; font: 500 .68rem/1.3 var(--font-body); color: var(--ink-3); }
