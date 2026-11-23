@@ -838,9 +838,9 @@ html[lang="kn"] .reg dt { letter-spacing: 0; text-transform: none; font-size: .8
 @media (min-width: 700px) { .reg.bank { grid-template-columns: auto minmax(0, 1fr); max-width: 640px; } .reg.bank dd:first-of-type { grid-column: auto; } }
 .reg.bank { gap: 10px 22px; padding: 18px 22px; }
 .reg.bank dd { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.copy { font: 600 .74rem var(--font-body); padding: 4px 11px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--bg); color: var(--ink-2); cursor: pointer; }
-.copy:hover { border-color: var(--ink); color: var(--ink); }
-.copy.done { background: var(--ink); color: #fff; border-color: var(--ink); }
+.copy-btn { font: 600 .74rem var(--font-body); padding: 4px 11px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--bg); color: var(--ink-2); cursor: pointer; }
+.copy-btn:hover { border-color: var(--ink); color: var(--ink); }
+.copy-btn.done { background: var(--ink); color: #fff; border-color: var(--ink); }
 
 /* Indicative costs on the funding tiers (Donate) */
 .cost { margin: 0 0 8px; font-size: .84rem; color: var(--ink-2); line-height: 1.4; }
