@@ -126,6 +126,26 @@
     }, 5200);
   }
 
+  // Collections: usage figures for the Servants Of Knowledge collection, refreshed from the Internet Archive.
+  // The numbers written in the page are today's; if the request fails they simply stay.
+  if (document.querySelector("[data-ia]")) {
+    var big = function (n) {
+      if (n >= 1e7) return (Math.floor(n / 1e5) / 100) + (inKn ? " ಕೋಟಿ+" : " crore+");
+      if (n >= 1e5) return (Math.floor(n / 1e3) / 100) + (inKn ? " ಲಕ್ಷ+" : " lakh+");
+      return n.toLocaleString("en-IN");
+    };
+    fetch("https://archive.org/advancedsearch.php?q=identifier%3AServantsOfKnowledge&fl%5B%5D=downloads&fl%5B%5D=month&fl%5B%5D=item_count&rows=1&output=json")
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var o = d.response.docs[0]; if (!o) return;
+        var v = { all: o.downloads, month: o.month, items: o.item_count };
+        document.querySelectorAll("[data-ia]").forEach(function (e) {
+          var k = e.getAttribute("data-ia"), n = Number(v[k]);
+          if (n > 0) e.textContent = k === "items" ? n.toLocaleString("en-IN") : big(n);
+        });
+      }).catch(function () {});
+  }
+
   // Collections: a tile opens a small card with the collection's description first; "Open" then goes to the Internet Archive.
   var ccTiles = document.querySelectorAll(".cgrid a.cc, .pgrid a.pt[data-alt]"); // collection tiles, and partner tiles that have two places to go
   if (ccTiles.length && window.HTMLDialogElement) {

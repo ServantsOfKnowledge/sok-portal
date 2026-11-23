@@ -820,3 +820,5 @@ a.pt b { color: var(--ink); }
 .kp2 { grid-template-columns: repeat(2, 1fr); margin-top: 4px; }
 .cc.more .cc-meta { padding: 8px 8px 8px 10px; }
 .cc.more img { object-fit: contain; }
+.kp4 { grid-template-columns: repeat(4, 1fr); margin-top: 4px; }
+@media (max-width: 1000px) { .kp4 { grid-template-columns: 1fr 1fr; } }
