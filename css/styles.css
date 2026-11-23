@@ -833,3 +833,11 @@ html[lang="kn"] .reg dt { letter-spacing: 0; text-transform: none; font-size: .8
 @media (min-width: 700px) { .reg { grid-template-columns: auto 1fr auto 1fr; max-width: 720px; gap: 6px 18px; padding: 12px 18px; } .reg dd:first-of-type { grid-column: 2 / -1; } }
 .reg code { white-space: nowrap; }
 @media (min-width: 700px) { .reg { grid-template-columns: auto minmax(0, 1fr) auto auto; max-width: 760px; } }
+
+/* Bank details (Donate) */
+@media (min-width: 700px) { .reg.bank { grid-template-columns: auto minmax(0, 1fr); max-width: 640px; } .reg.bank dd:first-of-type { grid-column: auto; } }
+.reg.bank { gap: 10px 22px; padding: 18px 22px; }
+.reg.bank dd { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.copy { font: 600 .74rem var(--font-body); padding: 4px 11px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--bg); color: var(--ink-2); cursor: pointer; }
+.copy:hover { border-color: var(--ink); color: var(--ink); }
+.copy.done { background: var(--ink); color: #fff; border-color: var(--ink); }

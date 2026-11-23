@@ -126,6 +126,15 @@
     }, 5200);
   }
 
+  // Copy buttons (bank details on the Donate page).
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    var label = b.textContent;
+    b.addEventListener("click", function () {
+      var v = b.getAttribute("data-copy"), done = function () { b.textContent = b.getAttribute("data-done") || "✓"; b.classList.add("done"); setTimeout(function () { b.textContent = label; b.classList.remove("done"); }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, function () {});
+    });
+  });
+
   // Collections: usage figures for the Servants Of Knowledge collection, refreshed from the Internet Archive.
   // The numbers written in the page are today's; if the request fails they simply stay.
   if (document.querySelector("[data-ia]")) {
