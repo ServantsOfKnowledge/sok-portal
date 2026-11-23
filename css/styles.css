@@ -240,7 +240,7 @@ html[data-dir="back"] { --from: -24px; }
 /* ---- infrastructure: five nodes + detail ---- */
 .flow { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; height: clamp(180px, 36vh, 340px); margin-bottom: var(--gap); }
 .node { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; text-align: left; border: 1px solid var(--line-2); background: var(--bg); color: var(--ink); border-radius: 18px; padding: clamp(12px, 2vh, 20px); cursor: pointer; font: inherit; transition: background-color 200ms var(--ease), border-color 200ms var(--ease), transform 200ms var(--ease); }
-.node:not(:last-child)::after { content: "→"; position: absolute; right: -30px; width: 30px; top: 50%; transform: translateY(-50%); text-align: center; color: var(--gold); font-size: 1.3rem; }
+.node:not(:last-child)::after { content: "⇒"; position: absolute; right: -30px; width: 30px; top: 50%; transform: translateY(-50%); text-align: center; color: var(--gold); font-size: 1.7rem; font-weight: 700; }
 .node:hover { border-color: var(--ink); transform: translateY(-2px); }
 .n-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .n-ico { color: var(--accent); display: flex; }
@@ -737,3 +737,4 @@ html[lang="kn"] .brand-word small { letter-spacing: .16em !important; }
 @media (max-width: 375px) { html[lang] .brand-word { font-size: 15.5px; } html[lang] .brand-word small { font-size: 7.8px; } .nav-cta .lang { padding: 0 10px; } .nav-toggle { margin-left: 0; } }
 @media (min-width: 390px) and (max-width: 600px) { html[lang] .brand-word { font-size: 17.5px; } html[lang] .brand-word small { font-size: 8.8px; } }
 @media (max-width: 350px) { html[lang] .brand-word { font-size: 14px; } html[lang] .brand-word small { font-size: 7px; } .brand img { width: 30px; height: 30px; } }
+html[lang="kn"] .node:not(:last-child)::after { font-size: 27.2px; } /* same arrow size as the English page (rem is smaller in Kannada) */
