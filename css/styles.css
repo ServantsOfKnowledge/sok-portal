@@ -938,3 +938,7 @@ html[lang="kn"] .voices .k { letter-spacing: 0; text-transform: none; font-size:
   .nav-links > li > a { font-size: clamp(.76rem, .5vw + .14rem, .84rem); }
   html[lang="kn"] .nav-links { gap: clamp(6px, .5vw, 10px); } html[lang="kn"] .nav-links > li > a { font-size: clamp(.72rem, .42vw + .13rem, .8rem); }
 }
+
+/* OpenScribe: work-in-progress pill and buttons that are not live yet */
+.wip { display: inline-block; vertical-align: middle; margin-left: 10px; padding: 6px 12px; border-radius: 999px; background: var(--gold); color: var(--navy, #0a1d37); font: 800 .68rem/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; }
+.btn.is-off { opacity: .45; cursor: not-allowed; pointer-events: none; }
