@@ -942,3 +942,4 @@ html[lang="kn"] .voices .k { letter-spacing: 0; text-transform: none; font-size:
 /* OpenScribe: work-in-progress pill and buttons that are not live yet */
 .wip { display: inline-block; vertical-align: middle; margin-left: 10px; padding: 6px 12px; border-radius: 999px; background: var(--gold); color: var(--navy, #0a1d37); font: 800 .68rem/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; }
 .btn.is-off { opacity: .45; cursor: not-allowed; pointer-events: none; }
+.reg dd.soon { color: var(--muted, #6b7280); font-style: italic; font-weight: 500; }
