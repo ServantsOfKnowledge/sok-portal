@@ -126,6 +126,33 @@
     }, 5200);
   }
 
+  // Collections: a tile opens a small card with the collection's description first; "Open" then goes to the Internet Archive.
+  var ccTiles = document.querySelectorAll(".cgrid a.cc");
+  if (ccTiles.length && window.HTMLDialogElement) {
+    var dlg = document.createElement("dialog"); dlg.className = "cc-modal";
+    var T2 = inKn ? { open: "ಇಂಟರ್ನೆಟ್ ಆರ್ಕೈವ್‌ನಲ್ಲಿ ತೆರೆಯಿರಿ ↗", close: "ಮುಚ್ಚಿ", none: "ಈ ಸಂಗ್ರಹವನ್ನು ಇಂಟರ್ನೆಟ್ ಆರ್ಕೈವ್‌ನಲ್ಲಿ ಇರಿಸಲಾಗಿದೆ." } : { open: "Open on the Internet Archive ↗", close: "Close", none: "This collection is hosted on the Internet Archive." };
+    dlg.innerHTML = '<div class="ccm-head"><div class="ccm-logo"></div><div><h3></h3><span class="ccm-items"></span></div></div><div class="ccm-body"></div><div class="ccm-actions"><a class="btn btn-primary" target="_blank" rel="noopener"></a><button type="button" class="btn btn-secondary"></button></div>';
+    document.body.appendChild(dlg);
+    var closeBtn = dlg.querySelector("button"), openA = dlg.querySelector(".ccm-actions a");
+    closeBtn.textContent = T2.close; closeBtn.addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener("keydown", function (e) { e.stopPropagation(); }); // arrows must not turn the page while the card is open
+    ccTiles.forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+        e.preventDefault();
+        var img = a.querySelector("img, .mono"), meta = a.querySelector(".cc-meta");
+        dlg.querySelector(".ccm-logo").innerHTML = img ? img.outerHTML.replace(/ loading="lazy"/, "") : "";
+        dlg.querySelector("h3").textContent = meta.querySelector("b").textContent;
+        var it = meta.querySelector("span"); dlg.querySelector(".ccm-items").textContent = it ? it.textContent : "";
+        var body = dlg.querySelector(".ccm-body"); body.textContent = "";
+        (a.getAttribute("data-desc") || T2.none).split("\n").forEach(function (t) { var p = document.createElement("p"); p.textContent = t; body.appendChild(p); });
+        openA.href = a.href; openA.textContent = T2.open;
+        dlg.showModal();
+      });
+    });
+  }
+
   // Videos: click to play inside the card (privacy-friendly embed); modifier-click still opens YouTube.
   document.querySelectorAll('.vcard[href*="youtube.com/watch"]').forEach(function (a) {
     a.addEventListener("click", function (e) {

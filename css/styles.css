@@ -788,3 +788,20 @@ html[lang="kn"] .brand-word small { letter-spacing: .16em !important; }
 /* Press: highlighted articles carry a small brass tag */
 .press-card[data-top] .press-meta::after { content: "Highlight"; margin-left: auto; font: 700 .62rem/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 4px 8px; border-radius: 999px; align-self: center; }
 html[lang="kn"] .press-card[data-top] .press-meta::after { content: "ಮುಖ್ಯ ಲೇಖನ"; letter-spacing: 0; text-transform: none; font-size: .68rem; }
+
+/* Collection card: description first, then the Internet Archive */
+.cc-modal { width: min(540px, calc(100vw - 32px)); max-height: min(80vh, 640px); border: 0; border-radius: 22px; padding: 22px 24px; background: var(--bg); color: var(--ink); box-shadow: 0 30px 80px -20px rgba(10,29,55,.55); overflow: hidden; }
+.cc-modal[open] { display: flex; flex-direction: column; gap: 14px; animation: in .25s var(--ease); }
+.cc-modal::backdrop { background: rgba(10,29,55,.55); }
+.ccm-head { display: flex; gap: 14px; align-items: center; }
+.ccm-logo img, .ccm-logo .mono { width: 64px; height: 64px; flex: none; display: flex; align-items: center; justify-content: center; object-fit: contain; border: 1px solid var(--line); border-radius: 14px; background: #fff; padding: 5px; box-sizing: border-box; font: 700 1.2rem var(--font-display); color: var(--ink); }
+.ccm-head h3 { margin: 0; font: 700 1.2rem/1.2 var(--font-display); letter-spacing: -.01em; }
+.ccm-items { font-size: .85rem; color: var(--gold-ink); font-weight: 600; }
+.ccm-body { overflow-y: auto; min-height: 0; padding-right: 4px; }
+.ccm-body p { margin: 0 0 .7em; font-size: .95rem; line-height: 1.55; color: var(--ink-2); } .ccm-body p:last-child { margin-bottom: 0; }
+.ccm-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+@media (prefers-reduced-motion: reduce) { .cc-modal[open] { animation: none; } }
+
+/* Partners that link out (their collection on the Internet Archive, or their own website) */
+a.pt { text-decoration: none; color: inherit; cursor: pointer; }
+a.pt b { color: var(--ink); }
