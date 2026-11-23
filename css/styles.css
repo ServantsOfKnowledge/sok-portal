@@ -744,3 +744,35 @@ html[lang="kn"] .brand-word small { letter-spacing: .16em !important; }
 @media (max-width: 900px) { .chain5 a:not(:last-child)::after { display: none; } }
 .chain5 a:not(:last-child) { padding-right: 24px; } .chain5 a:not(:first-child) { padding-left: 22px; }
 @media (max-width: 900px) { .chain5 a:not(:last-child) { padding-right: 16px; } .chain5 a:not(:first-child) { padding-left: 16px; } }
+
+/* ---- Repub page ---- */
+.rps { display: grid; grid-template-rows: repeat(4, minmax(0, 1fr)); gap: 8px; min-height: 0; }
+.rp-four { grid-template-columns: repeat(4, 1fr); }
+.rd > .rd-bot:only-child, .rd > .rp-four { min-height: 0; }
+.rp-cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(16px, 3vw, 40px); align-items: start; }
+.rp-cols .k { display: block; font: 700 .68rem/1 var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.rp-opts code, .md-item code { font: 600 .8rem ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--soft); color: var(--ink); padding: 1px 6px; border-radius: 6px; }
+.rp-opts li { font-size: .86rem; padding-top: 6px; padding-bottom: 6px; } .rp-opts li::before { top: 14px; }
+.rp-opts code { display: inline-block; min-width: 4.2em; margin-right: 6px; text-align: center; }
+#steps .md-item h2 { margin-top: 0; } #steps .md-item p { max-width: 62ch; }
+@media (max-width: 1000px) { .rp-four { grid-template-columns: 1fr 1fr; } .rp-cols { grid-template-columns: 1fr; } .rps { grid-template-columns: 1fr 1fr; grid-template-rows: auto; } }
+@media (max-width: 480px) { .rp-four, .rps { grid-template-columns: 1fr; } }
+.jobs.plain .job:nth-child(n) { background-image: none; } .jobs.plain .job::before { display: none; } /* the Research Desk page draws pictures behind its cards; Repub does not */
+/* Repub "How it works": scale the text to the screen height so the panel is not left half empty */
+#steps .md-list button { padding: clamp(6px, 1.6vh, 16px) 14px; font-size: clamp(.86rem, 1.9vh, 1.1rem); } #steps .md-list button b { font-size: clamp(.78rem, 1.7vh, 1rem); }
+#steps .md-item h2 { font-size: clamp(1.6rem, 4.6vh, 2.8rem); margin-bottom: .5em; }
+#steps .md-item p { font-size: clamp(1rem, 2.3vh, 1.3rem); line-height: 1.55; max-width: 60ch; }
+#steps .md-item .facts { margin-top: clamp(10px, 2.6vh, 28px); max-width: 64ch; }
+#steps .md-item .facts li { font-size: clamp(.9rem, 2vh, 1.15rem); padding-top: clamp(8px, 1.7vh, 16px); padding-bottom: clamp(8px, 1.7vh, 16px); } #steps .md-item .facts li::before { top: clamp(15px, 2.4vh, 24px); }
+#steps .md-item code { font-size: .9em; }
+#steps .md-item .inst-code pre { font-size: clamp(.78rem, 1.7vh, .95rem); padding: clamp(10px, 2vh, 18px) 18px; max-width: 64ch; }
+.inst-code pre code { background: none; padding: 0; border-radius: 0; color: inherit; font: inherit; }
+/* Repub "Web app": the four steps read as a flow, with larger type to fill the cards */
+.rp-four { gap: 26px; }
+.rp-four .mini { position: relative; overflow: visible; }
+.rp-four .mini .k { font: 800 clamp(1.5rem, 4.2vh, 2.6rem)/1 var(--font-display); letter-spacing: -.02em; text-transform: none; color: var(--gold); margin-bottom: clamp(6px, 1.6vh, 16px); }
+.rp-four .mini h4 { font-size: clamp(1.15rem, 3vh, 1.7rem); }
+.rp-four .mini p { font-size: clamp(.88rem, 2vh, 1.1rem); line-height: 1.5; }
+.rp-four .mini:not(:last-child)::after { content: "→"; position: absolute; right: -24px; top: 50%; transform: translateY(-50%); width: 22px; text-align: center; color: var(--gold); font-size: 1.3rem; }
+@media (max-width: 1000px) { .rp-four { gap: 12px; } .rp-four .mini:not(:last-child)::after { display: none; } }
+#web .rd { grid-template-rows: minmax(0, 1.05fr) minmax(0, 1fr); } @media (max-width: 1000px) { #web .rd { grid-template-rows: auto; } }

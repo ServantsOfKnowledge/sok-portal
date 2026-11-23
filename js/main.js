@@ -3,12 +3,12 @@
   "use strict";
 
   // Page order: ← → keys, the footer arrows, dots and swipe all walk this list.
-  var PAGES = [["index", "Home"], ["infrastructure", "Infrastructure"], ["work", "Digitisation"], ["collections", "Collections"], ["research-desk", "Research Desk"], ["about", "About"], ["press", "Media"], ["events", "Events"], ["publications", "Publications"], ["partners", "Partners"], ["support", "Donate"]];
+  var PAGES = [["index", "Home"], ["infrastructure", "Infrastructure"], ["work", "Digitisation"], ["collections", "Collections"], ["repub", "Repub"], ["research-desk", "Research Desk"], ["about", "About"], ["press", "Media"], ["events", "Events"], ["publications", "Publications"], ["partners", "Partners"], ["support", "Donate"]];
   // Addresses carry no .html: "about", and "./" for the home page of the current folder (English at the root, Kannada in /kn/).
   function norm(h) { return (h || "").replace(/#.*$/, "").replace(/^\.\//, "").replace(/\.html$/, "") || "index"; }
   var here = norm(location.pathname.split("/").pop());
   var inKn = /\/kn\/[^\/]*$/.test(location.pathname);
-  var KN = ["ಮುಖಪುಟ", "ಮೂಲಸೌಕರ್ಯ", "ಡಿಜಿಟಲೀಕರಣ", "ಸಂಗ್ರಹಗಳು", "Research Desk", "ನಮ್ಮ ಬಗ್ಗೆ", "ಮಾಧ್ಯಮ", "ಕಾರ್ಯಕ್ರಮಗಳು", "ಪ್ರಕಟಣೆಗಳು", "ಪಾಲುದಾರರು", "ದೇಣಿಗೆ ನೀಡಿ"];
+  var KN = ["ಮುಖಪುಟ", "ಮೂಲಸೌಕರ್ಯ", "ಡಿಜಿಟಲೀಕರಣ", "ಸಂಗ್ರಹಗಳು", "Repub", "Research Desk", "ನಮ್ಮ ಬಗ್ಗೆ", "ಮಾಧ್ಯಮ", "ಕಾರ್ಯಕ್ರಮಗಳು", "ಪ್ರಕಟಣೆಗಳು", "ಪಾಲುದಾರರು", "ದೇಣಿಗೆ ನೀಡಿ"];
   function U(i) { return PAGES[i][0] === "index" ? "./" : PAGES[i][0]; }
   function T(i) { return inKn ? KN[i] : PAGES[i][1]; }
   var at = PAGES.findIndex(function (p) { return p[0] === here; });
