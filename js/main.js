@@ -3,12 +3,12 @@
   "use strict";
 
   // Page order: ← → keys, the footer arrows, dots and swipe all walk this list.
-  var PAGES = [["index", "Home"], ["infrastructure", "Infrastructure"], ["work", "Digitisation"], ["collections", "Collections"], ["openscribe", "OpenScribe"], ["repub", "Repub"], ["research-desk", "Research Desk"], ["egazette", "eGazette"], ["impact", "Impact"], ["about", "About"], ["press", "Media"], ["events", "Events"], ["publications", "Publications"], ["partners", "Partners"], ["support", "Donate"], ["prospectus", "Prospectus"]];
+  var PAGES = [["index", "Home"], ["infrastructure", "Infrastructure"], ["work", "Digitisation"], ["collections", "Collections"], ["openscribe", "OpenScribe"], ["repub", "Repub"], ["research-desk", "Research Desk"], ["egazette", "eGazette"], ["impact", "Impact"], ["about", "About"], ["press", "Media"], ["events", "Events"], ["academy", "SOK Academy"], ["publications", "Publications"], ["partners", "Partners"], ["support", "Donate"], ["prospectus", "Prospectus"]];
   // Addresses carry no .html: "about", and "./" for the home page of the current folder (English at the root, Kannada in /kn/).
   function norm(h) { return (h || "").replace(/#.*$/, "").replace(/^\.\//, "").replace(/\.html$/, "") || "index"; }
   var here = norm(location.pathname.split("/").pop());
   var inKn = /\/kn\/[^\/]*$/.test(location.pathname);
-  var KN = ["ಮುಖಪುಟ", "ಮೂಲಸೌಕರ್ಯ", "ಡಿಜಿಟಲೀಕರಣ", "ಸಂಗ್ರಹಗಳು", "OpenScribe", "Repub", "Research Desk", "eGazette", "ಪರಿಣಾಮ", "ನಮ್ಮ ಬಗ್ಗೆ", "ಮಾಧ್ಯಮ", "ಕಾರ್ಯಕ್ರಮಗಳು", "ಪ್ರಕಟಣೆಗಳು", "ಪಾಲುದಾರರು", "ದೇಣಿಗೆ ನೀಡಿ", "ಪ್ರಾಸ್ಪೆಕ್ಟಸ್"];
+  var KN = ["ಮುಖಪುಟ", "ಮೂಲಸೌಕರ್ಯ", "ಡಿಜಿಟಲೀಕರಣ", "ಸಂಗ್ರಹಗಳು", "OpenScribe", "Repub", "Research Desk", "eGazette", "ಪರಿಣಾಮ", "ನಮ್ಮ ಬಗ್ಗೆ", "ಮಾಧ್ಯಮ", "ಕಾರ್ಯಕ್ರಮಗಳು", "SOK ಅಕಾಡೆಮಿ", "ಪ್ರಕಟಣೆಗಳು", "ಪಾಲುದಾರರು", "ದೇಣಿಗೆ ನೀಡಿ", "ಪ್ರಾಸ್ಪೆಕ್ಟಸ್"];
   function U(i) { return PAGES[i][0] === "index" ? "./" : PAGES[i][0]; }
   function T(i) { return inKn ? KN[i] : PAGES[i][1]; }
   if (here === "about" && location.hash === "#impact") { location.replace("impact"); return; } // "Who it helps" moved to its own Impact page
