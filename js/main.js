@@ -215,6 +215,9 @@
     var filter = "all", page = 0;
     function render() {
       var list = cards.filter(function (c) { return filter === "all" || c.getAttribute("data-year") === filter; });
+      // Page 1 carries the highlights (one article per story); the rest, including repeat coverage, follow on the later pages.
+      list = list.filter(function (c) { return c.hasAttribute("data-top"); }).concat(list.filter(function (c) { return !c.hasAttribute("data-top"); }));
+      list.forEach(function (c) { grid.appendChild(c); }); // DOM order follows the page order, so the highlights really come first
       var cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
       cards.forEach(function (c) { c.style.display = ""; });
       var h = cards[0].offsetHeight || 150, gap = parseFloat(getComputedStyle(grid).rowGap) || 14;

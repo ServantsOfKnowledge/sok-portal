@@ -350,7 +350,7 @@ html[data-dir="back"] { --from: -24px; }
 
 /* partners: one wall of tiles, colour-coded by category */
 .pwrap { flex: 1; min-height: 0; padding: var(--gap) 0; }
-.pgrid { height: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 10px; }
+.pgrid { height: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 10px; }
 .pt { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 3px; border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px 10px 30px; background: var(--bg); transition: opacity .3s var(--ease), transform .2s var(--ease), border-color .2s var(--ease); min-height: 0; overflow: hidden; }
 .pt:hover { border-color: var(--ink); transform: translateY(-2px); }
 .pt b { font: 700 clamp(.78rem, 1.55vh, .98rem)/1.2 var(--font-display); letter-spacing: -.01em; overflow-wrap: anywhere; }
@@ -776,3 +776,15 @@ html[lang="kn"] .brand-word small { letter-spacing: .16em !important; }
 .rp-four .mini:not(:last-child)::after { content: "→"; position: absolute; right: -24px; top: 50%; transform: translateY(-50%); width: 22px; text-align: center; color: var(--gold); font-size: 1.3rem; }
 @media (max-width: 1000px) { .rp-four { gap: 12px; } .rp-four .mini:not(:last-child)::after { display: none; } }
 #web .rd { grid-template-rows: minmax(0, 1.05fr) minmax(0, 1fr); } @media (max-width: 1000px) { #web .rd { grid-template-rows: auto; } }
+
+/* Partners (37 and growing): rows are as tall as their text needs, and the grid scrolls inside its own area if it must */
+@media (min-width: 1101px) { .pwrap { overflow-y: auto; } .pgrid { height: auto; min-height: 100%; grid-auto-rows: auto; } .pt { overflow: visible; } }
+@media (min-width: 1101px) {
+  .pt { padding: 6px 10px 6px 26px; gap: 1px; } .pt .dot { left: 10px; }
+  .pt b { font-size: clamp(.72rem, 1.45vh, .92rem); line-height: 1.15; } .pt span { font-size: clamp(.62rem, 1.15vh, .74rem); line-height: 1.2; }
+  .pt.has-logo { padding-left: 44px; } .pt .lg { left: 8px; width: 28px; height: 28px; }
+}
+
+/* Press: highlighted articles carry a small brass tag */
+.press-card[data-top] .press-meta::after { content: "Highlight"; margin-left: auto; font: 700 .62rem/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 4px 8px; border-radius: 999px; align-self: center; }
+html[lang="kn"] .press-card[data-top] .press-meta::after { content: "ಮುಖ್ಯ ಲೇಖನ"; letter-spacing: 0; text-transform: none; font-size: .68rem; }
