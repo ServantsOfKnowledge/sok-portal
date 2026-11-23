@@ -912,3 +912,12 @@ html[lang="kn"] .voices .k { letter-spacing: 0; text-transform: none; font-size:
 .voice-grid { grid-template-columns: repeat(5, 1fr); }
 @media (max-width: 1000px) { .voice-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .voice-grid { grid-template-columns: 1fr; } }
+
+/* eGazette showcase page */
+.eg { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--gap); min-height: 0; }
+.eg .shot { display: flex; flex-direction: column; min-height: 0; } .eg .shot img { flex: 1; min-height: 0; max-height: none; width: 100%; object-fit: cover; object-position: top left; }
+.eg-page { grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr); }
+.nav-links .nav-extra { display: none; }
+@media (max-width: 1199px) { .nav-links .nav-extra { display: block; } }
+@media (max-width: 1000px) { .eg { grid-template-columns: 1fr; } .eg-page { grid-template-rows: auto; } .eg .shot img { max-height: none; height: auto; } }
+.eg-link { align-self: center; margin-left: 4px; white-space: nowrap; }
