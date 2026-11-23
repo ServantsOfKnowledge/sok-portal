@@ -886,3 +886,5 @@ html[lang="kn"] .reg dt { letter-spacing: 0; text-transform: none; font-size: .8
   .nav-links a, html[lang="kn"] .nav-links a { font-size: clamp(.74rem, .55vw + .12rem, .84rem); }
 }
 .first-claim { margin-top: 0; margin-bottom: clamp(8px, 1.6vh, 16px); }
+.reg dd.wide { grid-column: 2 / -1; font-weight: 500; font-size: .9rem; line-height: 1.4; }
+@media (max-width: 699px) { .reg dd.wide { grid-column: auto; } }
