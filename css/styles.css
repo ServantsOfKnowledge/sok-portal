@@ -867,3 +867,22 @@ html[lang="kn"] .reg dt { letter-spacing: 0; text-transform: none; font-size: .8
 #tiers .mini .cost { color: rgba(255,255,255,.82); } #tiers .mini .cost b { color: var(--gold); }
 #tiers .mini .facts li { color: rgba(255,255,255,.9); border-top-color: rgba(255,255,255,.2); }
 #tiers .mini .facts li::before { background: var(--gold); }
+
+.first-claim { margin: .7em 0 0; padding: 8px 14px; border-left: 3px solid var(--gold); background: var(--soft); border-radius: 0 10px 10px 0; font-size: .88rem; line-height: 1.45; max-width: 92ch; }
+.first-claim b { color: var(--gold-ink); }
+/* Impact page: the six cards share the height left under the heading, with type that scales to it */
+.impact-grid { flex: 1; min-height: 0; grid-auto-rows: minmax(0, 1fr); padding-bottom: var(--gap); }
+.impact-grid .mini { display: flex; flex-direction: column; justify-content: flex-start; padding: clamp(12px, 2.2vh, 24px) clamp(14px, 1.6vw, 24px); overflow: hidden; }
+.impact-grid .chap { gap: clamp(6px, 1.2vh, 12px); }
+.impact-grid .chap .who { font-size: clamp(.95rem, 2.1vh, 1.3rem); }
+.impact-grid .chap p { font-size: clamp(.84rem, 1.75vh, 1.08rem); line-height: 1.5; }
+@media (max-width: 1000px) { .impact-grid { flex: none; } }
+.impact-grid .chap .who { font-size: clamp(.92rem, 1.9vh, 1.2rem); }
+.impact-grid .chap p { font-size: clamp(.82rem, 1.55vh, 1.02rem); line-height: 1.48; }
+
+/* the nav has twelve items now: tighter spacing between 1200px and 1600px keeps it on one line */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .nav-links, html[lang="kn"] .nav-links { gap: clamp(6px, .6vw, 12px); }
+  .nav-links a, html[lang="kn"] .nav-links a { font-size: clamp(.74rem, .55vw + .12rem, .84rem); }
+}
+.first-claim { margin-top: 0; margin-bottom: clamp(8px, 1.6vh, 16px); }
