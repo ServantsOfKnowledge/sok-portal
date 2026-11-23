@@ -127,7 +127,7 @@
   }
 
   // Collections: a tile opens a small card with the collection's description first; "Open" then goes to the Internet Archive.
-  var ccTiles = document.querySelectorAll(".cgrid a.cc");
+  var ccTiles = document.querySelectorAll(".cgrid a.cc, .pgrid a.pt[data-alt]"); // collection tiles, and partner tiles that have two places to go
   if (ccTiles.length && window.HTMLDialogElement) {
     var dlg = document.createElement("dialog"); dlg.className = "cc-modal";
     var T2 = inKn ? { open: "ಇಂಟರ್ನೆಟ್ ಆರ್ಕೈವ್‌ನಲ್ಲಿ ತೆರೆಯಿರಿ ↗", close: "ಮುಚ್ಚಿ", none: "ಈ ಸಂಗ್ರಹವನ್ನು ಇಂಟರ್ನೆಟ್ ಆರ್ಕೈವ್‌ನಲ್ಲಿ ಇರಿಸಲಾಗಿದೆ." } : { open: "Open on the Internet Archive ↗", close: "Close", none: "This collection is hosted on the Internet Archive." };
@@ -141,12 +141,12 @@
       a.addEventListener("click", function (e) {
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
         e.preventDefault();
-        var img = a.querySelector("img, .mono"), meta = a.querySelector(".cc-meta");
+        var img = a.querySelector("img, .mono"), meta = a.querySelector(".cc-meta") || a, isPt = a.classList.contains("pt");
         dlg.querySelector(".ccm-logo").innerHTML = img ? img.outerHTML.replace(/ loading="lazy"/, "") : "";
         dlg.querySelector("h3").textContent = meta.querySelector("b").textContent;
-        var it = meta.querySelector("span"); dlg.querySelector(".ccm-items").textContent = it ? it.textContent : "";
+        var it = meta.querySelector("span"); dlg.querySelector(".ccm-items").textContent = it && !isPt ? it.textContent : "";
         var body = dlg.querySelector(".ccm-body"); body.textContent = "";
-        (a.getAttribute("data-desc") || T2.none).split("\n").forEach(function (t) { var p = document.createElement("p"); p.textContent = t; body.appendChild(p); });
+        (a.getAttribute("data-desc") || (isPt && it ? it.textContent : T2.none)).split("\n").forEach(function (t) { var p = document.createElement("p"); p.textContent = t; body.appendChild(p); });
         openA.href = a.href; openA.textContent = T2.open;
         if (a.getAttribute("data-alt")) { altA.href = a.getAttribute("data-alt"); altA.textContent = a.getAttribute("data-alt-label") || a.getAttribute("data-alt"); altA.hidden = false; } else altA.hidden = true;
         dlg.showModal();
