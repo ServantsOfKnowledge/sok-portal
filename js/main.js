@@ -202,6 +202,14 @@
   document.querySelectorAll(".nav-links a").forEach(function (a) {
     if (norm(a.getAttribute("href")) === here && !/^\.\./.test(a.getAttribute("href"))) a.setAttribute("aria-current", "page");
   });
+  // Resources menu: opens on hover or focus (CSS), on click for touch laptops, closes on Esc or a click elsewhere.
+  document.querySelectorAll(".has-sub").forEach(function (li) {
+    var tg = li.querySelector(".sub-toggle");
+    if (li.querySelector(".sub a[aria-current]")) tg.setAttribute("aria-current", "page");
+    tg.addEventListener("click", function (e) { e.preventDefault(); var o = li.classList.toggle("open"); tg.setAttribute("aria-expanded", o ? "true" : "false"); });
+    document.addEventListener("click", function (e) { if (!li.contains(e.target)) { li.classList.remove("open"); tg.setAttribute("aria-expanded", "false"); } });
+    li.addEventListener("keydown", function (e) { if (e.key === "Escape") { li.classList.remove("open"); tg.setAttribute("aria-expanded", "false"); tg.blur(); e.stopPropagation(); } });
+  });
 
   // Tabs: <button class="tab" data-tab="id"> shows <section class="panel" id="id">.
   var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-tab]"));
