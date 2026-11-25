@@ -316,3 +316,14 @@
     render();
   }
 })();
+
+/* scroll edge fade: flag scrollers that have more content above / below (styled in styles.css) */
+(function () {
+  var els = [].slice.call(document.querySelectorAll(".screen, .panel"));
+  function mark(e) { var m = e.scrollHeight - e.clientHeight; e.toggleAttribute("data-up", e.scrollTop > 4); e.toggleAttribute("data-down", m - e.scrollTop > 4); }
+  function all() { els.forEach(mark); }
+  els.forEach(function (e) { e.addEventListener("scroll", function () { mark(e); }, { passive: true }); });
+  ["resize", "load", "hashchange"].forEach(function (t) { window.addEventListener(t, all); });
+  document.addEventListener("click", function () { requestAnimationFrame(function () { requestAnimationFrame(all); }); });
+  all();
+})();

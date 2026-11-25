@@ -1000,3 +1000,48 @@ html[lang="kn"] .kk { letter-spacing: 0; text-transform: none; font-size: .8rem;
 .march > span { color: var(--gold); align-self: center; font-size: 1.1rem; }
 @media (max-width: 1000px) { .detail.mant { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .msteps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .march { grid-template-columns: 1fr; } .march > span { transform: rotate(90deg); justify-self: center; } }
+
+/* ---- tablet & touch polish (iPad etc.) ---- */
+html { -webkit-tap-highlight-color: transparent; }
+a, button, .tab, summary { touch-action: manipulation; }
+
+/* press feedback lands on touch-down, like .btn */
+.tab:active, .pager button:not(:disabled):active, .pg:active, .nav-toggle:active, .dp:active { transform: scale(.94); transition-duration: 80ms; }
+a.press-card:active { transform: scale(.985); transition-duration: 80ms; }
+
+/* scroll edge fade: main.js sets data-up / data-down on a scroller that has more content that way */
+.screen, .panel { --ft: 0px; --fb: 0px; }
+.screen[data-up], .panel[data-up] { --ft: 28px; }
+.screen[data-down], .panel[data-down] { --fb: 40px; }
+.screen:is([data-up], [data-down]), .panel:is([data-up], [data-down]) {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--ft), #000 calc(100% - var(--fb)), transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 var(--ft), #000 calc(100% - var(--fb)), transparent 100%);
+}
+
+/* fingers: 44pt targets, no hover that sticks after a tap, a pad you can actually hit */
+@media (pointer: coarse) {
+  .tab { min-height: 44px; padding-inline: 18px; }
+  .nav-toggle { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+  .nav-cta .lang { min-height: 44px; display: inline-flex; align-items: center; }
+  .pager button { min-height: 44px; }
+  .pg { width: 44px; height: 44px; }
+  .dots a { padding: 18px 4px; }
+  .slim .container { padding-top: 2px; padding-bottom: 2px; }
+  .dpad { grid-template: 44px / repeat(3, 44px); gap: 6px; bottom: 60px; opacity: .5; }
+  .dp { width: 44px; height: 44px; border-radius: 12px; } .dp svg { width: 24px; height: 24px; }
+  .dp-up, .dp-down { display: none; }
+  .dp-left { grid-area: 1 / 1; } .dp-help { grid-area: 1 / 2; } .dp-right { grid-area: 1 / 3; }
+}
+@media (hover: none) {
+  a.press-card:hover { transform: none; box-shadow: none; }
+  .tab:hover:not([aria-selected="true"]) { border-color: var(--line-2); color: var(--ink-2); }
+  .btn-primary:hover { background: var(--ink); } .btn-secondary:hover { background: none; color: var(--ink); }
+  .pager button:not(:disabled):hover, .pg:hover { background: none; color: var(--ink); }
+  .dp:hover { background: var(--ink); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-links, .tab, .btn, .pg, .dots i { transition-duration: .01ms; }
+  .tab:active, .pager button:active, .pg:active, .nav-toggle:active, .dp:active, a.press-card:active { transform: none; }
+}
+/* iPad portrait: six parts in two rows of three, so the detail panel starts on screen */
+@media (min-width: 601px) and (max-width: 1000px) { .flow { grid-template-columns: repeat(3, 1fr); } .node { padding-top: 12px; padding-bottom: 12px; } }
