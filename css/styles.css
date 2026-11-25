@@ -1123,3 +1123,5 @@ a.press-card:active { transform: scale(.985); transition-duration: 80ms; }
   #tiers > p { margin-bottom: 8px; }
 }
 @media (min-width: 1001px) and (max-height: 800px) { html[lang="kn"] #people .person p { line-height: 1.42; } html[lang="kn"] #people .person { padding-top: 10px; padding-bottom: 10px; } }
+/* reduced motion: the page change fades, it does not slide */
+@media (prefers-reduced-motion: reduce) { html, html[data-dir="back"] { --from: 0px; } }

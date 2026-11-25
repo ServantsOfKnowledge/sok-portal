@@ -27,11 +27,14 @@
     if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
     if (e.key === "ArrowRight") go(at + 1); else if (e.key === "ArrowLeft") go(at - 1);
   });
-  var sx = 0, sy = 0;
-  document.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  var sx = 0, sy = 0, skip = false;
+  // a swipe that starts inside something that scrolls sideways (code block, plot) or an open dialog belongs to that, not to page turning
+  function scrollsSideways(el) { for (; el && el !== document.body; el = el.parentElement) { if (el.tagName === "DIALOG" || (el.scrollWidth > el.clientWidth + 2 && /auto|scroll/.test(getComputedStyle(el).overflowX))) return true; } return false; }
+  document.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; skip = e.touches.length > 1 || scrollsSideways(e.target); }, { passive: true });
   document.addEventListener("touchend", function (e) {
+    if (skip) return;
     var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 70 && Math.abs(dy) < 50) go(dx < 0 ? at + 1 : at - 1);
+    if (Math.abs(dx) > 70 && Math.abs(dx) > 2 * Math.abs(dy)) go(dx < 0 ? at + 1 : at - 1);
   }, { passive: true });
 
   // "?" button beside the footer arrows: tells people they can swipe or use the arrow keys.
